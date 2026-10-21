@@ -1,0 +1,110 @@
+<!-- ============ ФОРМА: скидка новым клиентам ============ -->
+<section class="order" id="order" aria-labelledby="order-t">
+  <div class="wrap order__grid">
+    <div class="order__main">
+      <p class="order__kicker">Впервые у нас?</p>
+      <h2 class="h2 order__title" id="order-t">{{ORDER_TITLE}}</h2>
+      <p class="order__sub">{{ORDER_SUB}}</p>
+      <form class="form" id="orderForm" novalidate>
+        <div class="field">
+          <input type="text" name="order_service_name" placeholder="Ваше имя" autocomplete="given-name" aria-label="Ваше имя">
+        </div>
+        <div class="field" id="telField">
+          <input type="tel" name="order_service_tel" placeholder="Ваш телефон*" autocomplete="tel" inputmode="tel" aria-label="Ваш телефон" required>
+          <span class="field__err">Введите номер телефона полностью</span>
+        </div>
+        <label class="agree" id="agree">
+          <input type="checkbox" name="acceptance-1" value="1" required>
+          <span>Даю <a href="https://ltrstyle.ru/soglasie-na-obrabotku-personalnyh-dannyh/" target="_blank" rel="noopener">согласие на обработку персональных данных</a></span>
+        </label>
+        <button class="btn btn--gold form__btn" type="submit">Получить скидку</button>
+      </form>
+      <div class="form__done" role="status" aria-live="polite">Спасибо! Заявка отправлена — администратор свяжется с вами в ближайшее время.</div>
+    </div>
+    <div class="order__photo">
+      <img src="{{ORDERPHOTO}}" alt="Окрашивание в студии LTRstyle" loading="lazy">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ПОДВАЛ (как на сайте) ============ -->
+<footer class="ftr" id="footer">
+  <div class="wrap ftr__grid">
+    <div>
+      <a class="ftr__logo" href="https://ltrstyle.ru/"><img src="{{FLOGO}}" alt="LTRstyle"></a>
+      <p>© 2022 Студия волос LTRStyle<br>«ИП Тараканова Л.В.»,<br>ОГРНИП 317774600003502</p>
+    </div>
+    <div>
+      <p>м. Парк Победы</p>
+      <p>Москва, ул. Василисы Кожиной, 13</p>
+      <p>ПН–ВС: 10:00–22:00</p>
+      <p><a href="tel:+79997990606">+7 999 799 06 06</a></p>
+    </div>
+    <div>
+      <p class="ftr__cap">Услуги</p>
+      <div class="ftr__cols">
+        <p class="ftr__h" style="grid-column:span 2">Окрашивание и стрижки</p>
+        <p class="ftr__h">Уход за волосами</p>
+        <ul>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/">Airtouch</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/konturing/">Контуринг</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/odin-ton/">Окрашивание в один тон</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/okrashivanie-kornej/">Окрашивание корней</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/shatush/">Шатуш</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/balayazh/">Балаяж</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/melirovanie/">Мелирование</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/">Осветление корней</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/tonirovanie/">Тонирование</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/vosstanovlenie-volos/">Восстановление волос</a></li>
+          <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/piling-dlya-kozhi-golovy/">Пилинг для кожи головы</a></li>
+        </ul>
+      </div>
+    </div>
+    <ul class="ftr__menu">
+      <li><a href="https://ltrstyle.ru/articles/">Статьи</a></li>
+      <li><a href="https://ltrstyle.ru/otzyvy/">Отзывы</a></li>
+      <li><a href="https://ltrstyle.ru/akczii/">Акции</a></li>
+      <li><a href="https://ltrstyle.ru/kontakty/">Контакты</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="msgr">
+  <a href="https://wa.me/79997990606" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><img src="{{WA}}" alt=""></a>
+  <a href="https://t.me/" target="_blank" rel="noopener" aria-label="Написать в Telegram"><img src="{{TG}}" alt=""></a>
+</div>
+
+<script>
+(function(){
+  // меню на мобильных
+  var hdr=document.getElementById('hdr'),b=document.getElementById('burger');
+  b.addEventListener('click',function(){var o=hdr.classList.toggle('is-open');b.setAttribute('aria-expanded',o)});
+
+  // маска телефона +7 (___) ___-__-__
+  var tel=document.querySelector('#orderForm input[type=tel]');
+  tel.addEventListener('input',function(){
+    var d=tel.value.replace(/\D/g,'');if(d[0]==='8')d='7'+d.slice(1);if(d&&d[0]!=='7')d='7'+d;d=d.slice(0,11);
+    var r='';if(d.length){r='+7';if(d.length>1)r+=' ('+d.slice(1,4);if(d.length>=4)r+=')';if(d.length>4)r+=' '+d.slice(4,7);if(d.length>7)r+='-'+d.slice(7,9);if(d.length>9)r+='-'+d.slice(9,11)}
+    tel.value=r;document.getElementById('telField').classList.remove('is-error');
+  });
+
+  // отправка (подключить к CF7 / CRM при интеграции)
+  var f=document.getElementById('orderForm'),ag=document.getElementById('agree');
+  ag.querySelector('input').addEventListener('change',function(){ag.classList.remove('is-error')});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    if(tel.value.replace(/\D/g,'').length<11){document.getElementById('telField').classList.add('is-error');ok=false}
+    if(!ag.querySelector('input').checked){ag.classList.add('is-error');ok=false}
+    if(!ok)return;
+    if(window.ym){try{ym(88422013,'reachGoal','skidka')}catch(_){}}
+    f.classList.add('is-sent');
+  });
+})();
+</script>
