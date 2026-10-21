@@ -21,7 +21,8 @@ $arts = foreach ($line in (Read-Text "$src\articles.tsv") -split "`r?`n") {
     views = [int]$f[4]; ex = $f[6]
   }
 }
-function Url($a) { "https://ltrstyle.ru/articles/$($a.slug)/" }
+# Пока свёрстана одна статья — все карточки ведут на неё. На сайте здесь будет "https://ltrstyle.ru/articles/$($a.slug)/"
+function Url($a) { 'article.html' }
 
 function Card($a, [switch]$Lazy) {
   $load = if ($Lazy) { ' loading="lazy"' } else { '' }
