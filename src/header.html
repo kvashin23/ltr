@@ -2,31 +2,62 @@
 <header class="hdr" id="hdr">
   <div class="wrap">
     <div class="hdr__top">
-      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" id="burger"><span></span><span></span><span></span></button>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mainNav" id="burger"><span></span><span></span><span></span></button>
       <div class="hdr__addr">Василисы Кожиной, 13<small>м. Парк Победы, <a href="#footer">показать на карте</a></small></div>
       <a class="hdr__logo" href="home.html" aria-label="LTRstyle — студия волос Леси Таракановой"><img src="{{LOGO}}" alt="LTRstyle"></a>
       <div class="hdr__cnt"><a href="tel:+79997990606">+7 999 799 06 06</a><small>10:00–22:00</small></div>
     </div>
-    <nav aria-label="Главное меню">
+    <nav aria-label="Главное меню" id="mainNav">
       <ul class="nav">
-        <li><a href="https://ltrstyle.ru/uslugi/">Услуги</a>
-          <ul class="nav__sub">
-            <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/">Окрашивание и стрижки</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/konturing/">Контуринг</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/shatush/">Шатуш</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/balayazh/">Балаяж</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/">Airtouch</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/">Уход за волосами</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/brovi-i-resniczy/">Брови и ресницы</a></li>
-            <li><a href="https://ltrstyle.ru/uslugi/makiyazh/">Макияж</a></li>
-          </ul>
+        <li class="has-drop">
+          <a href="https://ltrstyle.ru/uslugi/" class="nav__drop-link">Услуги</a><button class="nav__toggle" type="button" aria-expanded="false" aria-controls="dropSvc" aria-label="Показать все услуги"><svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5"/></svg></button>
+          <div class="drop" id="dropSvc">
+            <div class="wrap drop__in">
+              <div class="drop__col drop__col--wide">
+                <a class="drop__h" href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/">Окрашивание и стрижки</a>
+                <ul class="drop__list drop__list--2">
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/">Airtouch</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/balayazh/">Балаяж</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/shatush/">Шатуш</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/konturing/">Контуринг</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/melirovanie/">Мелирование</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/odin-ton/">Окрашивание в один тон</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/tonirovanie/">Тонирование</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/okrashivanie-kornej/">Окрашивание корней</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/strizhki/">Стрижки</a></li>
+                </ul>
+              </div>
+              <div class="drop__col">
+                <a class="drop__h" href="https://ltrstyle.ru/uslugi/uhod-za-volosami/">Уход за волосами</a>
+                <ul class="drop__list">
+                  <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/vosstanovlenie-volos/">Восстановление волос</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/piling-dlya-kozhi-golovy/">Пилинг для кожи головы</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/kombinirovannyj-top-uhod/">Комбинированный топ-уход</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/zashhitnyj-kompleks-bond-angel-ot-brae/">Bond Angel от BRAE</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/uhod-absolyutnoe-schaste-lebel/">Абсолютное счастье Lebel</a></li>
+                  <li><a href="https://ltrstyle.ru/uslugi/uhod-za-volosami/ukhod-tokio-inkarami/">Уход Tokio Inkarami</a></li>
+                </ul>
+              </div>
+              <div class="drop__col">
+                <a class="drop__h" href="https://ltrstyle.ru/uslugi/brovi-i-resniczy/">Брови и ресницы</a>
+                <a class="drop__h" href="https://ltrstyle.ru/uslugi/makiyazh/">Макияж</a>
+                <a class="drop__all" href="https://ltrstyle.ru/price/">Все цены <svg viewBox="0 0 9 14" aria-hidden="true"><path d="M1.5 1.5 7 7l-5.5 5.5"/></svg></a>
+              </div>
+              <a class="drop__promo" href="home.html#order">
+                <span class="drop__promo-k">Впервые у нас?</span>
+                <span class="drop__promo-t">−10% на&nbsp;первый визит</span>
+                <span class="drop__promo-d">по промокоду «Сайт»</span>
+                <span class="btn btn--gold">Записаться</span>
+              </a>
+            </div>
+          </div>
         </li>
         <li{{NAV_ARTICLES}}><a href="index.html">Статьи</a></li>
-        <li><a href="https://ltrstyle.ru/team/">Команда</a></li>
+        <li><a href="https://ltrstyle.ru/employee/">Команда</a></li>
         <li><a href="https://ltrstyle.ru/price/">Цены</a></li>
-        <li><a href="https://ltrstyle.ru/otzyvy/">Отзывы</a></li>
-        <li><a href="https://ltrstyle.ru/akczii/">Акции</a></li>
-        <li><a href="https://ltrstyle.ru/kontakty/">Контакты</a></li>
+        <li><a href="https://ltrstyle.ru/reviews/">Отзывы</a></li>
+        <li><a href="https://ltrstyle.ru/sales/">Акции</a></li>
+        <li><a href="https://ltrstyle.ru/contacts/">Контакты</a></li>
         <li><a href="https://ltrstyle.ru/our-works/">Наши работы</a></li>
       </ul>
     </nav>

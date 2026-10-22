@@ -31,9 +31,9 @@
 .stars{display:inline-flex;gap:3px;color:var(--gold)}
 .stars svg{width:18px;height:18px;fill:currentColor}
 
-/* ---------- 1. Первый экран ---------- */
+/* ---------- 1. Первый экран: фото + переключатель техник ---------- */
 .hero{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
-.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:640px}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);min-height:clamp(620px,calc(100svh - 132px),780px)}
 .hero__main{display:flex;flex-direction:column;justify-content:center;padding:72px 64px 72px 0}
 .hero__title{font-family:var(--serif);font-weight:400;font-size:clamp(42px,5.2vw,80px);line-height:.98;letter-spacing:-.01em;margin:0 0 26px;max-width:12ch}
 .hero__lead{font-size:20px;line-height:1.5;color:var(--text-2);margin:0 0 40px;max-width:40ch}
@@ -45,22 +45,50 @@
 .hero__cta{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center}
 .hero__phone{font-size:20px;text-decoration:none}
 .hero__phone small{display:block;font-size:13px;color:var(--muted)}
-.hero__photo{position:relative;margin-right:calc((100vw - min(100vw, var(--wrap) + var(--gut)*2))/-2 - var(--gut))}
-.hero__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 50%}
-.hero__badge{position:absolute;left:28px;bottom:28px;background:#fff;padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.12)}
-.hero__badge b{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1}
-.hero__badge span{font-family:var(--sans);font-size:12px;color:var(--text-2);line-height:1.4}
-@media (max-width:1240px){.facts b{font-size:26px}}
+.stage{position:relative;background:#d9d4cc;margin-right:calc((100vw - min(100vw, var(--wrap) + var(--gut)*2))/-2 - var(--gut))}
+.stage__pics{position:absolute;inset:0;overflow:hidden}
+.stage__pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:0;transform:scale(1.06);transition:opacity .9s ease,transform 6.5s ease-out}
+.stage__pics img.is-on{opacity:1;transform:scale(1)}
+.stage__panel{position:absolute;left:28px;right:28px;bottom:28px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:26px 28px 0;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.stage__k{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.stage__cap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 28px;align-items:end;min-height:96px}
+.stage__name{font-size:36px;line-height:1.05;margin:0}
+.stage__desc{grid-column:1;font-size:17px;line-height:1.45;color:var(--text-2);margin:0}
+.stage__more{grid-column:2;grid-row:1/span 2;align-self:center;display:inline-flex;align-items:center;gap:10px;font-size:18px;color:var(--navy);text-decoration:none;white-space:nowrap}
+.stage__more svg{width:9px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;transition:transform .15s}
+.stage__more:hover svg{transform:translateX(4px)}
+.stage__cap>*{transition:opacity .25s,transform .25s}
+.stage__cap.is-swap>*{opacity:0;transform:translateY(6px)}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:22px -28px 0;border-top:1px solid var(--border)}
+.tab{position:relative;background:none;border:0;border-right:1px solid var(--border);padding:16px 8px 18px;cursor:pointer;font-size:17px;color:var(--muted);transition:color .2s,background .2s}
+.tab:last-child{border-right:0}
+.tab:hover{color:var(--text);background:rgba(39,48,88,.04)}
+.tab[aria-selected=true]{color:var(--text)}
+.tab i{position:absolute;left:0;right:0;top:-1px;height:2px;background:transparent;overflow:hidden}
+.tab[aria-selected=true] i{background:rgba(39,48,88,.15)}
+.tab i::after{content:"";position:absolute;inset:0;background:var(--navy);transform:scaleX(0);transform-origin:0 50%}
+.tab[aria-selected=true] i::after{transform:scaleX(1)}
+.stage.is-auto .tab[aria-selected=true] i::after{animation:tabfill var(--dur,6s) linear forwards;transform:scaleX(0)}
+@keyframes tabfill{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.stage__pics img{transition:opacity .3s}.stage.is-auto .tab[aria-selected=true] i::after{animation:none;transform:scaleX(1)}}
+@media (max-width:1240px){.facts b{font-size:26px}.stage__name{font-size:30px}}
 @media (max-width:991px){
   .hero__grid{grid-template-columns:1fr;min-height:0}
   .hero__main{padding:40px 0 36px}
   .hero__lead{font-size:18px;margin-bottom:30px}
-  .hero__photo{margin:0 calc(var(--gut)*-1);aspect-ratio:4/3.2;order:-1}
+  .stage{margin:0 calc(var(--gut)*-1);order:-1;display:flex;flex-direction:column}
+  .stage__pics{position:relative;inset:auto;aspect-ratio:4/4.4}
+  .stage__panel{position:static;box-shadow:none;background:#fff;padding:20px var(--gut) 0;border-bottom:1px solid var(--border)}
+  .stage__cap{grid-template-columns:1fr;min-height:0}
+  .stage__name{font-size:28px}
+  .stage__desc{font-size:16px}
+  .stage__more{grid-column:1;grid-row:auto;margin-top:6px;font-size:17px}
+  .tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin:16px calc(var(--gut)*-1) 0}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:14px 18px 16px;font-size:16px}
   .facts{margin-bottom:32px}
   .facts li{padding-right:12px;margin-right:12px}
   .facts b{font-size:24px}
-  .hero__badge{left:16px;bottom:16px;padding:12px 14px}
-  .hero__badge b{font-size:26px}
 }
 @media (max-width:420px){.facts{grid-template-columns:1fr 1fr}.facts li:nth-child(3){display:none}.facts li:nth-child(2){border-right:0;margin-right:0}}
 
@@ -161,18 +189,22 @@
 .adv__item p{margin:0;font-size:17px;line-height:1.5;color:var(--text-2)}
 @media (max-width:991px){.adv__grid{grid-template-columns:1fr;gap:36px}.adv__list{grid-template-columns:1fr;gap:32px}.adv__item h3{font-size:22px}}
 
-/* ---------- 8. Наши работы ---------- */
-.works__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:250px;gap:18px}
-.work{position:relative;overflow:hidden;background:#e9e7e3;border:0;padding:0;cursor:zoom-in}
-.work:nth-child(1){grid-column:span 2;grid-row:span 2}
-.work:nth-child(6){grid-row:span 2}
-.work img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.work:hover img{transform:scale(1.04)}
-.work::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(39,48,88,.35));opacity:0;transition:opacity .3s}
-.work:hover::after{opacity:1}
-.works__more{display:flex;justify-content:center;margin-top:56px}
-@media (max-width:991px){.works__grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:220px;gap:12px}.work:nth-child(6){grid-row:span 1}}
-@media (max-width:600px){.works__grid{grid-auto-rows:170px;gap:8px}.works__more{margin-top:36px}}
+/* ---------- 8. Наши работы: лента, фото целиком (3:4 как у оригиналов) ---------- */
+.works__track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*18px)/4);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+.works__track::-webkit-scrollbar{display:none}
+.works__track.is-drag{cursor:grabbing;scroll-snap-type:none}
+.works__track.is-drag .work{pointer-events:none}
+.work{scroll-snap-align:start;position:relative;overflow:hidden;background:#e9e7e3;border:0;padding:0;cursor:zoom-in;aspect-ratio:3/4}
+.work img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;-webkit-user-drag:none;user-select:none}
+.work:hover img{transform:scale(1.03)}
+.work__zoom{position:absolute;right:14px;bottom:14px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.work__zoom svg{width:18px;height:18px;fill:none;stroke:var(--navy);stroke-width:1.6}
+.work:hover .work__zoom,.work:focus-visible .work__zoom{opacity:1;transform:none}
+.works__bar{height:2px;background:var(--border);margin-top:28px;position:relative;overflow:hidden}
+.works__bar i{position:absolute;top:0;bottom:0;left:0;background:var(--navy);transition:left .15s,width .15s}
+.works__more{display:flex;justify-content:center;margin-top:44px}
+@media (max-width:1100px){.works__track{grid-auto-columns:calc((100% - 2*18px)/3)}}
+@media (max-width:782px){.works__track{grid-auto-columns:62%;gap:10px}.work__zoom{opacity:1;transform:none;width:36px;height:36px}}
 .lb{position:fixed;inset:0;z-index:80;background:rgba(10,12,24,.92);display:none;align-items:center;justify-content:center}
 .lb.is-on{display:flex}
 .lb img{max-width:min(92vw,900px);max-height:86vh;object-fit:contain;display:block}
@@ -216,7 +248,7 @@
 .toast.is-on{opacity:1;transform:translate(-50%,0)}
 
 /* ---------- 10. Контакты ---------- */
-.contacts{border-top:1px solid var(--border)}
+.contacts{border-top:1px solid var(--border);overflow:hidden}
 .contacts__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);min-height:520px}
 .contacts__main{padding:90px 60px 90px 0;display:flex;flex-direction:column;justify-content:center}
 .contacts dl{margin:34px 0 36px;display:grid;gap:22px}
@@ -255,8 +287,29 @@
         <a class="hero__phone" href="tel:+79997990606">+7 999 799 06 06<small>ежедневно 10:00–22:00</small></a>
       </div>
     </div>
-    <div class="hero__photo">
-      <img src="https://ltrstyle.ru/wp-content/uploads/2022/03/header.jpg" alt="Интерьер студии LTRstyle" fetchpriority="high">
+    <div class="stage is-auto" id="stage">
+      <div class="stage__pics">
+        <img class="is-on" src="https://ltrstyle.ru/wp-content/uploads/2022/09/1-3-1229x1536.jpg" alt="Окрашивание Airtouch в студии LTRstyle" fetchpriority="high">
+        <img data-src="https://ltrstyle.ru/wp-content/uploads/2022/09/1-2-1152x1536.jpg" alt="Окрашивание балаяж в студии LTRstyle">
+        <img data-src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8885-1-1152x1536.jpg" alt="Окрашивание шатуш в студии LTRstyle">
+        <img data-src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_3317-2-1152x1536.jpg" alt="Контуринг в студии LTRstyle">
+        <img data-src="https://ltrstyle.ru/wp-content/uploads/2022/09/1-4-1152x1536.jpg" alt="Мелирование в студии LTRstyle">
+      </div>
+      <div class="stage__panel">
+        <p class="stage__k">Техники окрашивания</p>
+        <div class="stage__cap" id="stageCap" aria-live="polite">
+          <p class="stage__name">Airtouch</p>
+          <p class="stage__desc">Пряди отбирают потоком воздуха от&nbsp;фена&nbsp;— переходы получаются максимально мягкими и&nbsp;естественными.</p>
+          <a class="stage__more" href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/">Цены и работы <svg viewBox="0 0 9 14" aria-hidden="true"><path d="M1.5 1.5 7 7l-5.5 5.5"/></svg></a>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Техники окрашивания">
+          <button class="tab" type="button" role="tab" aria-selected="true" data-name="Airtouch" data-href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/" data-desc="Пряди отбирают потоком воздуха от&nbsp;фена&nbsp;— переходы получаются максимально мягкими и&nbsp;естественными.">Airtouch<i></i></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-name="Балаяж" data-href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/balayazh/" data-desc="Цвет растягивается от&nbsp;корней к&nbsp;концам мазками вручную&nbsp;— волосы выглядят объёмнее и&nbsp;глубже.">Балаяж<i></i></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-name="Шатуш" data-href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/shatush/" data-desc="Эффект выгоревших на&nbsp;солнце прядей: тёмные корни и&nbsp;светлые концы без резкой границы.">Шатуш<i></i></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-name="Контуринг" data-href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/konturing/" data-desc="Светлые пряди у&nbsp;лица подчёркивают черты и&nbsp;освежают образ без окрашивания всей длины.">Контуринг<i></i></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-name="Мелирование" data-href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/melirovanie/" data-desc="Осветление отдельных прядей по&nbsp;всей длине&nbsp;— классика, которая добавляет волосам света.">Мелирование<i></i></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -326,7 +379,7 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 class="h2" id="promo-t">Акции</h2>
-      <a class="btn btn--ghost" href="https://ltrstyle.ru/akczii/">Все акции</a>
+      <a class="btn btn--ghost" href="https://ltrstyle.ru/sales/">Все акции</a>
     </div>
     <div class="promos">
       <article class="promo">
@@ -350,7 +403,7 @@
         <div class="promo__body">
           <h3>Ежемесячный розыгрыш</h3>
           <p>Участвуйте в&nbsp;ежемесячном розыгрыше в&nbsp;соцсетях и&nbsp;получите шанс выиграть скидку 30% на&nbsp;услуги салона.</p>
-          <a class="promo__more" href="https://ltrstyle.ru/akczii/">Условия розыгрыша</a>
+          <a class="promo__more" href="https://ltrstyle.ru/sales/">Условия розыгрыша</a>
         </div>
       </article>
     </div>
@@ -384,21 +437,26 @@
     <div class="sec-head">
       <div>
         <h2 class="h2" id="works-t">Наши работы</h2>
-        <p>Окрашивания наших мастеров&nbsp;— нажмите на&nbsp;фото, чтобы рассмотреть.</p>
+        <p>Окрашивания наших мастеров&nbsp;— листайте и&nbsp;нажмите на&nbsp;фото, чтобы рассмотреть.</p>
       </div>
-      <a class="btn btn--ghost" href="https://ltrstyle.ru/our-works/">Все работы</a>
+      <div class="arrows">
+        <button class="arrow" type="button" id="wPrev" aria-label="Предыдущие работы"><svg viewBox="0 0 20 20"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+        <button class="arrow" type="button" id="wNext" aria-label="Следующие работы"><svg viewBox="0 0 20 20"><path d="M7.5 4l6 6-6 6"/></svg></button>
+      </div>
     </div>
-    <div class="works__grid" id="works">
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_4270-1-400x500.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_4270-1.jpg" alt="Окрашивание в студии LTRstyle, работа 1" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8594-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8594-1.jpg" alt="Окрашивание в студии LTRstyle, работа 2" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8565-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8565-1.jpg" alt="Окрашивание в студии LTRstyle, работа 3" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8774-400x499.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8774.jpg" alt="Окрашивание в студии LTRstyle, работа 4" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7392-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7392-1.jpg" alt="Окрашивание в студии LTRstyle, работа 5" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7401-3-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7401-3.jpg" alt="Окрашивание в студии LTRstyle, работа 6" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_9115-2-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_9115-2.jpg" alt="Окрашивание в студии LTRstyle, работа 7" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_2186-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_2186-1.jpg" alt="Окрашивание в студии LTRstyle, работа 8" loading="lazy"></button>
-      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_0440-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_0440-1.jpg" alt="Окрашивание в студии LTRstyle, работа 9" loading="lazy"></button>
+    <div class="works__track" id="works">
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_4270-1-768x960.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_4270-1-1638x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 1" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8594-1-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8594-1-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 2" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8565-1-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8565-1-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 3" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8774.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8774.jpg" alt="Окрашивание в студии LTRstyle, работа 4" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7392-1-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7392-1-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 5" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7401-3-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7401-3-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 6" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_9115-2-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_9115-2-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 7" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_2186-1-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_2186-1-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 8" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_0440-1-768x1024.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_0440-1-1536x2048.jpg" alt="Окрашивание в студии LTRstyle, работа 9" loading="lazy" draggable="false"><span class="work__zoom" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6"/><path d="m13.5 13.5 4 4M9 6.5v5M6.5 9h5"/></svg></span></button>
     </div>
+    <div class="works__bar" aria-hidden="true"><i id="wBar"></i></div>
+    <div class="works__more"><a class="btn btn--ghost" href="https://ltrstyle.ru/our-works/">Смотреть все работы</a></div>
   </div>
 </section>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр работы">
@@ -477,6 +535,51 @@
 
 <script>
 (function(){
+  // первый экран: переключатель техник (сам листает каждые 6 с, пока посетитель не выберет технику)
+  var stage=document.getElementById('stage'),pics=[].slice.call(stage.querySelectorAll('.stage__pics img')),tabs=[].slice.call(stage.querySelectorAll('.tab'));
+  var cap=document.getElementById('stageCap'),nm=cap.querySelector('.stage__name'),ds=cap.querySelector('.stage__desc'),mr=cap.querySelector('.stage__more');
+  var DUR=6000,idx=0,auto=!matchMedia('(prefers-reduced-motion:reduce)').matches,timer;
+  stage.style.setProperty('--dur',DUR+'ms');
+  function load(i){var im=pics[i];if(im&&im.dataset.src){im.src=im.dataset.src;im.removeAttribute('data-src')}}
+  function go(i,user){
+    i=(i+tabs.length)%tabs.length;load(i);load(i+1);
+    if(i!==idx){
+      pics[idx].classList.remove('is-on');pics[i].classList.add('is-on');
+      cap.classList.add('is-swap');
+      setTimeout(function(){var t=tabs[i];nm.textContent=t.dataset.name;ds.innerHTML=t.dataset.desc;mr.href=t.dataset.href;cap.classList.remove('is-swap')},220);
+    }
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i);t.tabIndex=k===i?0:-1;var bar=t.querySelector('i');bar.style.animation='none';bar.offsetWidth;bar.style.animation=''});
+    idx=i;
+    if(user){auto=false;stage.classList.remove('is-auto')}
+    clearTimeout(timer);if(auto)timer=setTimeout(function(){go(idx+1)},DUR);
+  }
+  tabs.forEach(function(t,k){
+    t.addEventListener('click',function(){go(k,true)});
+    t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){e.preventDefault();go(idx+d,true);tabs[idx].focus()}});
+  });
+  // пауза, пока курсор на фото или вкладка браузера скрыта
+  stage.addEventListener('mouseenter',function(){if(auto){clearTimeout(timer);stage.classList.remove('is-auto')}});
+  stage.addEventListener('mouseleave',function(){if(auto){stage.classList.add('is-auto');go(idx)}});
+  document.addEventListener('visibilitychange',function(){if(document.hidden)clearTimeout(timer);else if(auto)go(idx)});
+  if(!auto)stage.classList.remove('is-auto');
+  load(1);go(0);
+
+  // наши работы: стрелки, перетаскивание мышью, полоса прогресса
+  var wt=document.getElementById('works'),wp=document.getElementById('wPrev'),wn=document.getElementById('wNext'),wb=document.getElementById('wBar');
+  function wstep(){return wt.firstElementChild.getBoundingClientRect().width+parseFloat(getComputedStyle(wt).columnGap||18)}
+  function wupd(){
+    var max=wt.scrollWidth-wt.clientWidth;wp.disabled=wt.scrollLeft<=2;wn.disabled=wt.scrollLeft>=max-2;
+    wb.style.width=(wt.clientWidth/wt.scrollWidth*100)+'%';wb.style.left=(max>0?wt.scrollLeft/wt.scrollWidth*100:0)+'%';
+  }
+  wp.addEventListener('click',function(){wt.scrollBy({left:-wstep(),behavior:'smooth'})});
+  wn.addEventListener('click',function(){wt.scrollBy({left:wstep(),behavior:'smooth'})});
+  wt.addEventListener('scroll',wupd,{passive:true});addEventListener('resize',wupd);wupd();
+  var sx,sl,moved=false,down=false;
+  wt.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=wt.scrollLeft});
+  addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>5){moved=true;wt.classList.add('is-drag')}if(moved)wt.scrollLeft=sl-dx});
+  addEventListener('pointerup',function(){if(!down)return;down=false;if(moved){wt.classList.remove('is-drag');var s=wstep();wt.scrollTo({left:Math.round(wt.scrollLeft/s)*s,behavior:'smooth'})}});
+  wt.addEventListener('click',function(e){if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);
+
   // отзывы: слайдер + «читать полностью»
   var tr=document.getElementById('revTrack'),dots=document.getElementById('revDots'),pv=document.getElementById('revPrev'),nx=document.getElementById('revNext');
   var cards=[].slice.call(tr.children);

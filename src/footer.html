@@ -68,9 +68,9 @@
     </div>
     <ul class="ftr__menu">
       <li><a href="index.html">Статьи</a></li>
-      <li><a href="https://ltrstyle.ru/otzyvy/">Отзывы</a></li>
-      <li><a href="https://ltrstyle.ru/akczii/">Акции</a></li>
-      <li><a href="https://ltrstyle.ru/kontakty/">Контакты</a></li>
+      <li><a href="https://ltrstyle.ru/reviews/">Отзывы</a></li>
+      <li><a href="https://ltrstyle.ru/sales/">Акции</a></li>
+      <li><a href="https://ltrstyle.ru/contacts/">Контакты</a></li>
     </ul>
   </div>
 </footer>
@@ -85,6 +85,16 @@
   // меню на мобильных
   var hdr=document.getElementById('hdr'),b=document.getElementById('burger');
   b.addEventListener('click',function(){var o=hdr.classList.toggle('is-open');b.setAttribute('aria-expanded',o)});
+
+  // выпадающее меню «Услуги»: наведение на десктопе, клик по стрелке везде, Esc и клик мимо закрывают
+  var dl=hdr.querySelector('.has-drop'),dt=dl.querySelector('.nav__toggle'),wide=matchMedia('(min-width:992px)'),timer;
+  function setDrop(o){dl.classList.toggle('is-open',o);dt.setAttribute('aria-expanded',o)}
+  dt.addEventListener('click',function(e){e.stopPropagation();setDrop(!dl.classList.contains('is-open'))});
+  dl.addEventListener('mouseenter',function(){if(wide.matches){clearTimeout(timer);timer=setTimeout(function(){setDrop(true)},80)}});
+  dl.addEventListener('mouseleave',function(){if(wide.matches){clearTimeout(timer);timer=setTimeout(function(){setDrop(false)},180)}});
+  dl.addEventListener('focusout',function(e){if(wide.matches&&!dl.contains(e.relatedTarget))setDrop(false)});
+  document.addEventListener('click',function(e){if(!dl.contains(e.target))setDrop(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&dl.classList.contains('is-open')){setDrop(false);dt.focus()}});
 
   // маска телефона +7 (___) ___-__-__
   var tel=document.querySelector('#orderForm input[type=tel]');
