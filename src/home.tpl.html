@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Салон красоты в Москве | Студия LTRstyle</title>
+<meta name="description" content="Студия колористики LTRstyle - это салон красоты в Москве. Мы занимаемся всеми работами: сложное окрашивание, декапирование, смывку и уход за волосами. Записаться на услугу или ознакомиться с ценами и отзывами можно на сайте!">
+<link rel="canonical" href="https://ltrstyle.ru/">
+<meta property="og:image" content="https://ltrstyle.ru/wp-content/uploads/2022/09/xl.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Vollkorn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HairSalon","name":"Студия волос LTRstyle","url":"https://ltrstyle.ru/","telephone":"+7 999 799-06-06","image":"https://ltrstyle.ru/wp-content/uploads/2022/09/xl.webp",
+ "address":{"@type":"PostalAddress","streetAddress":"ул. Василисы Кожиной, 13","addressLocality":"Москва","addressCountry":"RU"},
+ "openingHours":"Mo-Su 10:00-22:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"481","ratingCount":"647"}}
+</script>
+<style>
+{{COMMON_CSS}}
+
+/* ================= ГЛАВНАЯ ================= */
+/* сетка как у блоков сайта (.ps-container: 1600px, поля 15px) — чтобы «Услуги» и «Команда» стояли ровно по краям */
+:root{--wrap:1570px;--gut:15px}
+.kicker{font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 18px;font-weight:400}
+.sec{padding:110px 0}
+.sec--soft{background:var(--soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:44px}
+.sec-head p{margin:14px 0 0;color:var(--text-2);font-size:18px;max-width:52ch}
+@media (max-width:782px){.sec{padding:64px 0}.sec-head{flex-direction:column;align-items:flex-start;margin-bottom:28px}.sec-head p{font-size:17px}}
+.stars{display:inline-flex;gap:3px;color:var(--gold)}
+.stars svg{width:18px;height:18px;fill:currentColor}
+
+/* ---------- 1. Первый экран ---------- */
+.hero{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:640px}
+.hero__main{display:flex;flex-direction:column;justify-content:center;padding:72px 64px 72px 0}
+.hero__title{font-family:var(--serif);font-weight:400;font-size:clamp(42px,5.2vw,80px);line-height:.98;letter-spacing:-.01em;margin:0 0 26px;max-width:12ch}
+.hero__lead{font-size:20px;line-height:1.5;color:var(--text-2);margin:0 0 40px;max-width:40ch}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;list-style:none;margin:0 0 44px;padding:0;border-top:1px solid var(--gold)}
+.facts li{padding:18px 20px 0 0;margin-right:20px;border-right:1px solid var(--border);font-family:var(--sans);font-size:13px;line-height:1.4;color:var(--text-2)}
+.facts li:last-child{border-right:0;margin-right:0;padding-right:0}
+.facts b{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:400;font-size:32px;line-height:1;color:var(--text);margin-bottom:8px;white-space:nowrap}
+.facts .stars svg{width:15px;height:15px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center}
+.hero__phone{font-size:20px;text-decoration:none}
+.hero__phone small{display:block;font-size:13px;color:var(--muted)}
+.hero__photo{position:relative;margin-right:calc((100vw - min(100vw, var(--wrap) + var(--gut)*2))/-2 - var(--gut))}
+.hero__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 50%}
+.hero__badge{position:absolute;left:28px;bottom:28px;background:#fff;padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.hero__badge b{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1}
+.hero__badge span{font-family:var(--sans);font-size:12px;color:var(--text-2);line-height:1.4}
+@media (max-width:1240px){.facts b{font-size:26px}}
+@media (max-width:991px){
+  .hero__grid{grid-template-columns:1fr;min-height:0}
+  .hero__main{padding:40px 0 36px}
+  .hero__lead{font-size:18px;margin-bottom:30px}
+  .hero__photo{margin:0 calc(var(--gut)*-1);aspect-ratio:4/3.2;order:-1}
+  .facts{margin-bottom:32px}
+  .facts li{padding-right:12px;margin-right:12px}
+  .facts b{font-size:24px}
+  .hero__badge{left:16px;bottom:16px;padding:12px 14px}
+  .hero__badge b{font-size:26px}
+}
+@media (max-width:420px){.facts{grid-template-columns:1fr 1fr}.facts li:nth-child(3){display:none}.facts li:nth-child(2){border-right:0;margin-right:0}}
+
+/* ---------- Исходные блоки сайта («Услуги», «Наша команда») ---------- */
+/* окружение как на ltrstyle.ru: наследуемый шрифт body и глобальный сброс из ps.css */
+.legacy{overflow-x:clip;font-family:Vollkorn,serif;font-size:16px;line-height:normal;color:#000;--price-font-serif:'Vollkorn',Georgia,serif;--price-font-sans:'Inter',Arial,sans-serif;--price-color-text:#000000;--price-color-text-secondary:#4d4a44;--price-color-muted:#969696;--price-color-border:#dddddd;--price-color-bg-soft:#fafafa;--price-color-accent:#baa886;--price-color-active:#273058}
+:where(.legacy) *,:where(.legacy) *::before,:where(.legacy) *::after{margin:0;padding:0;box-sizing:border-box}
+:where(.legacy) img{max-width:revert;display:revert}
+:where(.legacy) a{color:revert}
+:where(.legacy) button{font:revert;color:revert}
+:where(.legacy) :disabled{background:#ccc;border-color:#ccc}
+.legacy .ps-container{max-width:1600px;margin-left:auto;margin-right:auto;padding:0 15px}
+{{LEGACY_CSS}}
+
+/* ---------- 3. Как записаться ---------- */
+.how{border-top:1px solid var(--border)}
+.how__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:60px;align-items:start}
+.how__lead{font-size:18px;line-height:1.55;color:var(--text-2);margin:22px 0 0;max-width:36ch}
+.how__steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0;counter-reset:s}
+.how__steps li{counter-increment:s;border-top:1px solid var(--gold);padding-top:22px}
+.how__steps li::before{content:counter(s,decimal-leading-zero);display:block;font-size:34px;line-height:1;color:var(--gold);margin-bottom:18px}
+.how__steps b{display:block;font-weight:500;font-size:22px;line-height:1.2;margin-bottom:8px}
+.how__steps span{font-size:16px;line-height:1.5;color:var(--text-2)}
+.how__cta{grid-column:2;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:8px}
+.how__msg{display:flex;gap:10px}
+.how__msg a{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-family:var(--sans);font-size:14px;transition:border-color .15s}
+.how__msg a:hover{border-color:var(--navy)}
+.how__msg img{width:26px;height:26px;border-radius:50%}
+@media (max-width:991px){
+  .how__grid{grid-template-columns:1fr;gap:32px}
+  .how__steps{grid-template-columns:1fr;gap:22px}
+  .how__steps li{display:grid;grid-template-columns:52px 1fr;padding-top:18px}
+  .how__steps li::before{grid-row:span 2;font-size:28px;margin:0}
+  .how__cta{grid-column:1}
+}
+
+/* ---------- 4. Отзывы ---------- */
+.rev__grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:48px;align-items:start}
+.rating{position:sticky;top:30px;border:1px solid var(--border);background:#fff;padding:30px 28px}
+.rating__src{display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:13px;color:var(--text-2);margin:0 0 18px}
+.rating__src i{width:22px;height:22px;border-radius:50%;background:#fc3f1d;color:#fff;font-style:normal;font-weight:700;font-size:13px;display:grid;place-items:center;font-family:Arial,sans-serif}
+.rating__val{font-size:72px;line-height:1;margin:0 0 10px}
+.rating .stars svg{width:22px;height:22px}
+.rating__cnt{font-family:var(--sans);font-size:13px;color:var(--muted);margin:12px 0 26px}
+.rating .btn{width:100%;padding:10px 20px;font-size:17px}
+.rating__add{display:block;text-align:center;margin-top:14px;font-size:16px;color:var(--navy);text-decoration-color:var(--gold);text-underline-offset:3px}
+.rev__track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*18px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;align-items:start}
+.rev__track::-webkit-scrollbar{display:none}
+.rcard{scroll-snap-align:start;background:#fff;border:1px solid var(--border);padding:26px 26px 24px;display:flex;flex-direction:column}
+.rcard__top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rcard__ava{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--cream);color:var(--navy);display:grid;place-items:center;font-size:19px}
+.rcard__name{font-weight:500;font-size:19px;line-height:1.2}
+.rcard__date{display:block;font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:2px}
+.rcard .stars{margin-bottom:12px}
+.rcard .stars svg{width:15px;height:15px}
+.rcard__txt{margin:0;font-size:16px;line-height:1.55;color:#1a1a1a;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.rcard.is-open .rcard__txt{-webkit-line-clamp:unset;display:block}
+.rcard__more{align-self:flex-start;margin-top:14px;background:none;border:0;padding:0;cursor:pointer;color:var(--navy);font-size:16px;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+.rev__nav{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:28px}
+.dots{display:flex;gap:8px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .2s,width .2s}
+.dots i.on{background:var(--navy);width:24px;border-radius:4px}
+@media (max-width:1240px){.rev__track{grid-auto-columns:calc((100% - 18px)/2)}}
+@media (max-width:991px){
+  .rev__grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .rating{position:static;display:grid;grid-template-columns:auto 1fr;gap:4px 22px;align-items:center;padding:22px 20px}
+  .rating__src{grid-column:1/-1;margin-bottom:6px}
+  .rating__val{grid-row:span 2;font-size:56px;margin:0}
+  .rating__cnt{margin:0}
+  .rating .btn,.rating__add{grid-column:1/-1}
+  .rating .btn{margin-top:14px}
+}
+@media (max-width:600px){.rev__track{grid-auto-columns:86%;gap:12px}}
+
+/* ---------- 5. Акции ---------- */
+.promos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.promo{display:flex;flex-direction:column;background:var(--soft);border:1px solid var(--border)}
+.promo__pic{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e9e7e3}
+.promo__pic img{width:100%;height:100%;object-fit:cover}
+.promo__val{position:absolute;left:18px;top:18px;background:var(--navy);color:#fff;font-size:26px;line-height:1;padding:12px 14px 13px}
+.promo__body{padding:26px 28px 30px;display:flex;flex-direction:column;flex:1}
+.promo h3{font-weight:500;font-size:25px;line-height:1.2;margin:0 0 12px}
+.promo p{margin:0 0 22px;font-size:17px;line-height:1.5;color:var(--text-2)}
+.promo__code{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;border:1px dashed var(--gold);background:#fff;padding:9px 14px;font-family:var(--sans);font-size:13px;cursor:pointer;color:var(--text)}
+.promo__code b{font-weight:500;color:var(--navy)}
+.promo__code svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.promo__more{margin-top:auto;align-self:flex-start;font-size:17px;color:var(--navy);text-decoration-color:var(--gold);text-underline-offset:3px}
+@media (max-width:991px){.promos{grid-template-columns:1fr 1fr}.promos .promo:last-child{grid-column:1/-1}}
+@media (max-width:600px){.promos{grid-template-columns:1fr}.promos .promo:last-child{grid-column:auto}}
+
+/* ---------- 6. Преимущества ---------- */
+.adv__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:60px}
+.adv__lead{font-size:18px;color:var(--text-2);margin:24px 0 0;max-width:30ch}
+.adv__list{display:grid;grid-template-columns:1fr 1fr;gap:56px 60px;list-style:none;margin:0;padding:0}
+.adv__item{border-bottom:1px solid var(--gold);padding-bottom:26px}
+.adv__item img{width:48px;height:48px;margin-bottom:22px}
+.adv__item h3{font-weight:400;font-size:26px;line-height:1.15;margin:0 0 12px}
+.adv__item p{margin:0;font-size:17px;line-height:1.5;color:var(--text-2)}
+@media (max-width:991px){.adv__grid{grid-template-columns:1fr;gap:36px}.adv__list{grid-template-columns:1fr;gap:32px}.adv__item h3{font-size:22px}}
+
+/* ---------- 8. Наши работы ---------- */
+.works__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:250px;gap:18px}
+.work{position:relative;overflow:hidden;background:#e9e7e3;border:0;padding:0;cursor:zoom-in}
+.work:nth-child(1){grid-column:span 2;grid-row:span 2}
+.work:nth-child(6){grid-row:span 2}
+.work img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.work:hover img{transform:scale(1.04)}
+.work::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(39,48,88,.35));opacity:0;transition:opacity .3s}
+.work:hover::after{opacity:1}
+.works__more{display:flex;justify-content:center;margin-top:56px}
+@media (max-width:991px){.works__grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:220px;gap:12px}.work:nth-child(6){grid-row:span 1}}
+@media (max-width:600px){.works__grid{grid-auto-rows:170px;gap:8px}.works__more{margin-top:36px}}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(10,12,24,.92);display:none;align-items:center;justify-content:center}
+.lb.is-on{display:flex}
+.lb img{max-width:min(92vw,900px);max-height:86vh;object-fit:contain;display:block}
+.lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:24px;line-height:1}
+.lb button:hover{background:rgba(255,255,255,.25)}
+.lb__x{top:18px;right:18px}
+.lb__p{left:18px;top:50%;transform:translateY(-50%)}
+.lb__n{right:18px;top:50%;transform:translateY(-50%)}
+.lb__c{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px}
+
+/* ---------- 9. О салоне ---------- */
+.about__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:72px;align-items:start}
+.about__pics{position:sticky;top:30px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.about__pics img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#e9e7e3}
+.about__pics img:nth-child(2){margin-top:60px}
+.video{grid-column:1/-1;position:relative;aspect-ratio:16/9;background:#111;overflow:hidden;border:0;padding:0;cursor:pointer;display:block;width:100%}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .3s}
+.video:hover img{opacity:.85}
+.video span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--navy);border-radius:999px;padding:14px 24px 14px 18px;font-size:18px}
+.video span svg{width:22px;height:22px;fill:var(--navy)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.about__lead{font-size:21px;line-height:1.5;margin:22px 0 40px;color:var(--text-2)}
+.facts2{list-style:none;margin:0;padding:0;counter-reset:f;border-top:1px solid var(--gold)}
+.facts2 li{counter-increment:f;display:grid;grid-template-columns:52px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.5}
+.facts2 li::before{content:counter(f,decimal-leading-zero);font-size:22px;line-height:1.3;color:var(--gold)}
+.facts2 b{font-weight:500}
+.popular{margin-top:40px}
+.popular p{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.popular div{display:flex;flex-wrap:wrap;gap:10px}
+.popular a{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:17px;transition:border-color .15s,background .15s,color .15s}
+.popular a:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+@media (max-width:991px){
+  .about__grid{grid-template-columns:1fr;gap:36px}
+  .about__pics{position:static;order:2}
+  .about__pics img:nth-child(2){margin-top:30px}
+  .about__lead{font-size:18px}
+  .facts2 li{font-size:17px;grid-template-columns:40px 1fr;gap:10px}
+}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--navy);color:#fff;font-family:var(--sans);font-size:14px;padding:12px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- 10. Контакты ---------- */
+.contacts{border-top:1px solid var(--border)}
+.contacts__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);min-height:520px}
+.contacts__main{padding:90px 60px 90px 0;display:flex;flex-direction:column;justify-content:center}
+.contacts dl{margin:34px 0 36px;display:grid;gap:22px}
+.contacts dt{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contacts dd{margin:0;font-size:21px;line-height:1.35}
+.contacts dd a{text-decoration:none}
+.contacts__map{position:relative;background:#eceae6;margin-right:calc((100vw - min(100vw, var(--wrap) + var(--gut)*2))/-2 - var(--gut))}
+.contacts__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:991px){
+  .contacts__grid{grid-template-columns:1fr;min-height:0}
+  .contacts__main{padding:56px 0 40px}
+  .contacts__map{margin:0 calc(var(--gut)*-1);height:380px}
+}
+</style>
+</head>
+<body>
+
+{{HEADER}}
+
+<main>
+
+<!-- ============ 1. ПЕРВЫЙ ЭКРАН ============ -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__main">
+      <h1 class="kicker">Салон красоты LTRstyle в&nbsp;Москве</h1>
+      <p class="hero__title">Сложные техники окрашивания волос</p>
+      <p class="hero__lead">Студия Леси Таракановой у&nbsp;м.&nbsp;Парк Победы: блонд, Airtouch, балаяж, шатуш и&nbsp;исправление неудачного окрашивания.</p>
+      <ul class="facts">
+        <li><b>3000+</b>окрашиваний в&nbsp;год</li>
+        <li><b>3–4 ч</b>вместо 6–8: работаем в&nbsp;6&nbsp;рук</li>
+        <li><b>5,0 <span class="stars" aria-hidden="true">{{STAR}}</span></b>481 отзыв на&nbsp;Яндекс Картах</li>
+      </ul>
+      <div class="hero__cta">
+        <a class="btn btn--navy" href="#order">Записаться</a>
+        <a class="hero__phone" href="tel:+79997990606">+7 999 799 06 06<small>ежедневно 10:00–22:00</small></a>
+      </div>
+    </div>
+    <div class="hero__photo">
+      <img src="https://ltrstyle.ru/wp-content/uploads/2022/03/header.jpg" alt="Интерьер студии LTRstyle" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. УСЛУГИ — исходный блок сайта без изменений ============ -->
+<div class="legacy">
+{{BLOCK_SERVICES}}
+</div>
+
+<!-- ============ 3. КАК ЗАПИСАТЬСЯ ============ -->
+<section class="sec how" aria-labelledby="how-t">
+  <div class="wrap how__grid">
+    <div>
+      <h2 class="h2" id="how-t">Как записаться</h2>
+      <p class="how__lead">Оставьте заявку на&nbsp;сайте или позвоните&nbsp;— администратор детально проконсультирует и&nbsp;поможет подобрать удобные дату и&nbsp;время.</p>
+    </div>
+    <ol class="how__steps">
+      <li><b>Заявка или звонок</b><span>Через форму на&nbsp;сайте, по&nbsp;телефону или в&nbsp;мессенджере.</span></li>
+      <li><b>Консультация</b><span>Администратор перезвонит, уточнит нюансы и&nbsp;подберёт мастера.</span></li>
+      <li><b>Визит в&nbsp;студию</b><span>При первом визите&nbsp;— бесплатная тестовая прядь и&nbsp;скидка 10%.</span></li>
+    </ol>
+    <div class="how__cta">
+      <a class="btn btn--navy" href="#order">Оставить заявку</a>
+      <div class="how__msg">
+        <a href="https://wa.me/79997990606" target="_blank" rel="noopener"><img src="{{WA}}" alt="">WhatsApp</a>
+        <a href="https://t.me/" target="_blank" rel="noopener"><img src="{{TG}}" alt="">Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. ОТЗЫВЫ ============ -->
+<section class="sec sec--soft" aria-labelledby="rev-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2" id="rev-t">Отзывы</h2>
+      <div class="arrows">
+        <button class="arrow" type="button" id="revPrev" aria-label="Предыдущие отзывы"><svg viewBox="0 0 20 20"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+        <button class="arrow" type="button" id="revNext" aria-label="Следующие отзывы"><svg viewBox="0 0 20 20"><path d="M7.5 4l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="rev__grid">
+      <aside class="rating">
+        <p class="rating__src"><i aria-hidden="true">Я</i>Яндекс Карты</p>
+        <p class="rating__val">5,0</p>
+        <span class="stars" aria-label="5 из 5">{{STAR}}{{STAR}}{{STAR}}{{STAR}}{{STAR}}</span>
+        <p class="rating__cnt">481 отзыв • 647 оценок</p>
+        <a class="btn btn--navy" href="https://yandex.ru/maps/org/studiya_volos_ltrstyle/92497164316/reviews/" target="_blank" rel="noopener">Все отзывы</a>
+        <a class="rating__add" href="https://yandex.ru/maps/org/studiya_volos_ltrstyle/92497164316/reviews/" target="_blank" rel="noopener">Оставить отзыв</a>
+      </aside>
+      <div>
+        <div class="rev__track" id="revTrack">
+          <article class="rcard"><div class="rcard__top"><span class="rcard__ava" aria-hidden="true">O</span><div><span class="rcard__name">Olga Lebedkova</span><span class="rcard__date">27 мая</span></div></div><span class="stars" aria-label="5 из 5">{{STAR}}{{STAR}}{{STAR}}{{STAR}}{{STAR}}</span><p class="rcard__txt">Прекрасный салон, мастера, атмосфера, все идеально продумано. Особенно благодарна за результат сложного окрашивания на длинные волосы. Год ждала восстановления своих мелированных волос, Карина и Евгения рекомендовали делать уход в течение полугода. Результат есть - волосы стали крепче и выдержали осветление. Вернулась к привычному натуральному блонду, девочки услышали все мои пожелания, благодарна и очень счастлива! За 20 лет окрашивания впервые вижу такой цвет на себе! Уход Токио сделал волосы еще более живыми, блестящими, тяжелыми, мягкими. Удивило, как быстро сделали набор на фольгу, около часа в 6 рук! Все вместе вышло не более 4 часов. При том, что в других салонах со мной работали не менее 5 часов. Рекомендовала своей подруге. Её вместе со мной окрашивали из темного в светлый, получилось классно! За неё радуюсь еще больше. Спасибо всем причастным к нашей красоте! Вы -лучшие!❤️🪷❤️</p><button class="rcard__more" type="button">Читать полностью</button></article>
+          <article class="rcard"><div class="rcard__top"><span class="rcard__ava" aria-hidden="true">Н</span><div><span class="rcard__name">Наст Саламатина</span><span class="rcard__date">17 мая</span></div></div><span class="stars" aria-label="5 из 5">{{STAR}}{{STAR}}{{STAR}}{{STAR}}{{STAR}}</span><p class="rcard__txt">Очень хорошие впечатления остались после посещения салона! Когда шла не было никакого волнения, хотя красила волосы я впервые. Во время окрашивания мастер обо всем спрашивала, рассказывала и подсказывала, что лучше мне подойдет, также отвечала на все мои вопросы! Персонал салона, начиная от администратора и заканчивая мастером - очень милые, вежливые и приветливые девушки, которые сделали долгую процедуру максимально комфортной и приятной, за что им огромное спасибо! С большой заботой и нежностью относятся ко всем гостям салона 🥹❤️ Осталась очень довольна результатом, ничуть не пожалела, что свое первое окрашивание сделала именно в этом салоне. Уверена, что обязательно буду сюда возвращаться за новыми преображениями!</p><button class="rcard__more" type="button">Читать полностью</button></article>
+          <article class="rcard"><div class="rcard__top"><span class="rcard__ava" aria-hidden="true">А</span><div><span class="rcard__name">Александра</span><span class="rcard__date">16 июня</span></div></div><span class="stars" aria-label="5 из 5">{{STAR}}{{STAR}}{{STAR}}{{STAR}}{{STAR}}</span><p class="rcard__txt">Обновляю отзыв написанный в прошлом году. Была в этом замечательном салоне 12 июня, на сложном окрашивании, снова!😃во первых, хочу отметить, что абсолютно весь персонал дружелюбный,заботливый, всегда предложат чашечку чая или ещё много всего(у них обновление в меню, даже появились брускетты и закуски) салон очень красивый, стильный и уютный, а профессионалы работающие в нём - отдельное восхищение! Хотелось бы выразить ещё раз огромную благодарность мастерам стилистам Дарье и Карине, которые сделали мне просто шикарное окрашивание, ещё лучше, чем в прошлом году. Иду в этот салон как на праздник, с соответсвующим настроением, и всегда заранее знаю, что результат будет именно такой как я хочу, спасибо девочки, вы все волшебницы 🫶🏼</p><button class="rcard__more" type="button">Читать полностью</button></article>
+          <article class="rcard"><div class="rcard__top"><span class="rcard__ava" aria-hidden="true">К</span><div><span class="rcard__name">Ксения Зленко</span><span class="rcard__date">31 мая</span></div></div><span class="stars" aria-label="5 из 5">{{STAR}}{{STAR}}{{STAR}}{{STAR}}{{STAR}}</span><p class="rcard__txt">Впервые решилась на окрашивание именно в этой студии 2 года назад, и с тех пор я постоянный и восторженный клиент😍 атмосфера очень душевная, приятный интерьер, мастера, но моя личная любовь - Диана, в ней прекрасно все, начиная от внешнего вида, разговора, ну и конечно, заканчивая ее профессионализмом, жду окошки только к ней🤗 цены выше среднего, но по крайней мере ты спокоен за качество своих волос после окрашивания. Окрашивание отрастает плавно, после ухода волосы выглядят великолепно, рекомендую всем✨</p><button class="rcard__more" type="button">Читать полностью</button></article>
+          <article class="rcard"><div class="rcard__top"><span class="rcard__ava" aria-hidden="true">А</span><div><span class="rcard__name">Анастасия Красноштан</span><span class="rcard__date">9 августа</span></div></div><span class="stars" aria-label="5 из 5">{{STAR}}{{STAR}}{{STAR}}{{STAR}}{{STAR}}</span><p class="rcard__txt">Была в студии первый раз и могу сказать,что -это прекрасное место, уютное пространство,а самое главное внимательные и улыбчивые профи своего дела. Была записана к Ольге(юниор) ассистировала Дарья, Мастера очень крутые и с чувством юмора, угостили меня шампанским и вкусным бутербродом и самое главное ушла довольная и с красивым цветом и укладкой 🥰♥️Благодарю за внимание, профессионализм и крутую атмосферу 🙌🏻</p><button class="rcard__more" type="button">Читать полностью</button></article>
+        </div>
+        <div class="rev__nav"><div class="dots" id="revDots" aria-hidden="true"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. АКЦИИ ============ -->
+<section class="sec" aria-labelledby="promo-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2" id="promo-t">Акции</h2>
+      <a class="btn btn--ghost" href="https://ltrstyle.ru/akczii/">Все акции</a>
+    </div>
+    <div class="promos">
+      <article class="promo">
+        <div class="promo__pic"><img src="https://ltrstyle.ru/wp-content/uploads/2025/10/10-proczentov-skidka1.jpg" alt="" loading="lazy"><span class="promo__val">−10%</span></div>
+        <div class="promo__body">
+          <h3>Первое знакомство</h3>
+          <p>Получите скидку −10% на&nbsp;первое посещение салона по&nbsp;промокоду «Сайт».</p>
+          <button class="promo__code" type="button" data-copy="Сайт">Промокод <b>Сайт</b><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg></button>
+        </div>
+      </article>
+      <article class="promo">
+        <div class="promo__pic"><img src="https://ltrstyle.ru/wp-content/uploads/2025/10/privedi-podrugu.jpg" alt="" loading="lazy"><span class="promo__val">−10%&nbsp;+&nbsp;10%</span></div>
+        <div class="promo__body">
+          <h3>Акция «Приведи подругу»</h3>
+          <p>Расскажите о&nbsp;нас своим подругам, знакомым, коллегам или родственникам. Если кто-либо из&nbsp;них придет к&nbsp;нам на&nbsp;процедуру по&nbsp;вашей рекомендации, то&nbsp;вы&nbsp;получите скидку −10%, подружка&nbsp;— 10%.</p>
+          <a class="promo__more" href="#order">Записаться вместе</a>
+        </div>
+      </article>
+      <article class="promo">
+        <div class="promo__pic"><img src="https://ltrstyle.ru/wp-content/uploads/2025/10/rozygrysh-30-proczentov.jpg" alt="" loading="lazy"><span class="promo__val">−30%</span></div>
+        <div class="promo__body">
+          <h3>Ежемесячный розыгрыш</h3>
+          <p>Участвуйте в&nbsp;ежемесячном розыгрыше в&nbsp;соцсетях и&nbsp;получите шанс выиграть скидку 30% на&nbsp;услуги салона.</p>
+          <a class="promo__more" href="https://ltrstyle.ru/akczii/">Условия розыгрыша</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. ПРЕИМУЩЕСТВА ============ -->
+<section class="sec sec--soft" aria-labelledby="adv-t">
+  <div class="wrap adv__grid">
+    <div>
+      <h2 class="h2" id="adv-t">Наши преимущества</h2>
+      <p class="adv__lead">Студия Леси Таракановой специализируется на&nbsp;сложном окрашивании и&nbsp;бережной работе с&nbsp;волосами.</p>
+    </div>
+    <ul class="adv__list">
+      <li class="adv__item"><img src="https://ltrstyle.ru/wp-content/uploads/2022/03/icon-services-1.png" alt="" loading="lazy"><h3>Сложные техники окрашивания</h3><p>Мастера постоянно осваивают современные техники, чтобы предложить самые актуальные и&nbsp;безопасные решения.</p></li>
+      <li class="adv__item"><img src="https://ltrstyle.ru/wp-content/uploads/2022/03/icon-services-2.png" alt="" loading="lazy"><h3>Командная работа — 2&nbsp;мастера, 1&nbsp;клиент</h3><p>Работа в&nbsp;четыре руки сокращает время процедуры без потери качества.</p></li>
+      <li class="adv__item"><img src="https://ltrstyle.ru/wp-content/uploads/2022/03/icon-services-4.png" alt="" loading="lazy"><h3>Исправление цвета</h3><p>Поможем исправить неудачное окрашивание с&nbsp;учётом особенностей ваших волос.</p></li>
+      <li class="adv__item"><img src="https://ltrstyle.ru/wp-content/uploads/2022/03/icon-services-5.png" alt="" loading="lazy"><h3>Восстановление волос</h3><p>Используем PLEX-защиту и&nbsp;восстанавливаем волосы, повреждённые предыдущими процедурами.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 7. НАША КОМАНДА — исходный блок сайта без изменений ============ -->
+<div class="legacy">
+{{BLOCK_TEAM}}
+</div>
+
+<!-- ============ 8. НАШИ РАБОТЫ ============ -->
+<section class="sec" aria-labelledby="works-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="h2" id="works-t">Наши работы</h2>
+        <p>Окрашивания наших мастеров&nbsp;— нажмите на&nbsp;фото, чтобы рассмотреть.</p>
+      </div>
+      <a class="btn btn--ghost" href="https://ltrstyle.ru/our-works/">Все работы</a>
+    </div>
+    <div class="works__grid" id="works">
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_4270-1-400x500.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_4270-1.jpg" alt="Окрашивание в студии LTRstyle, работа 1" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8594-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8594-1.jpg" alt="Окрашивание в студии LTRstyle, работа 2" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8565-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8565-1.jpg" alt="Окрашивание в студии LTRstyle, работа 3" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8774-400x499.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_8774.jpg" alt="Окрашивание в студии LTRstyle, работа 4" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7392-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7392-1.jpg" alt="Окрашивание в студии LTRstyle, работа 5" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7401-3-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_7401-3.jpg" alt="Окрашивание в студии LTRstyle, работа 6" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_9115-2-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_9115-2.jpg" alt="Окрашивание в студии LTRstyle, работа 7" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_2186-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_2186-1.jpg" alt="Окрашивание в студии LTRstyle, работа 8" loading="lazy"></button>
+      <button class="work" type="button"><img src="https://ltrstyle.ru/wp-content/uploads/2022/09/img_0440-1-400x533.jpg" data-full="https://ltrstyle.ru/wp-content/uploads/2022/09/img_0440-1.jpg" alt="Окрашивание в студии LTRstyle, работа 9" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр работы">
+  <img id="lbImg" alt="">
+  <button class="lb__x" type="button" id="lbX" aria-label="Закрыть">×</button>
+  <button class="lb__p" type="button" id="lbP" aria-label="Предыдущее фото">‹</button>
+  <button class="lb__n" type="button" id="lbN" aria-label="Следующее фото">›</button>
+  <span class="lb__c" id="lbC"></span>
+</div>
+
+<!-- ============ 9. О САЛОНЕ ============ -->
+<section class="sec sec--soft" aria-labelledby="about-t">
+  <div class="wrap about__grid">
+    <div class="about__pics">
+      <img src="https://ltrstyle.ru/wp-content/uploads/2022/09/xl.webp" alt="Интерьер студии LTRstyle" loading="lazy">
+      <img src="https://ltrstyle.ru/wp-content/uploads/2022/09/xl-6.webp" alt="Рабочие места колористов в студии LTRstyle" loading="lazy">
+      <button class="video" type="button" id="video" data-src="https://rutube.ru/play/embed/5b4e0e98241b930dcf3c6cd844895424/?autoplay=1" aria-label="Смотреть видео о студии">
+        <img src="https://ltrstyle.ru/wp-content/uploads/2022/03/header.jpg" alt="" loading="lazy">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Видео о студии</span>
+      </button>
+    </div>
+    <div>
+      <h2 class="h2" id="about-t">О нашем салоне красоты</h2>
+      <p class="about__lead">У&nbsp;салона узкая специализация в&nbsp;области сложных окрашиваний и&nbsp;работы с&nbsp;блондом&nbsp;— больше 3000 окрашиваний в&nbsp;год.</p>
+      <ol class="facts2">
+        <li><span>Работаем в&nbsp;самых современных техниках окрашивания&nbsp;— <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/">Airtouch</a>, <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/shatush/">Шатуш</a>, <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/balayazh/">Балаяж</a>, Поцелуй солнца, Бейбилайтс, со&nbsp;всеми видами растяжки цвета.</span></li>
+        <li><span><b>Огромный опыт в&nbsp;исправлении работ</b>&nbsp;— можем исправить самые сложные случаи. Большой процент наших гостей впервые попадают к&nbsp;нам именно со&nbsp;сложными ситуациями, мы&nbsp;качественно исправляем работы, и&nbsp;они становятся нашими постоянными клиентами.</span></li>
+        <li><span><b>Работа со&nbsp;всеми гостями в&nbsp;6&nbsp;рук</b>&nbsp;— 2&nbsp;колориста и&nbsp;ассистент. Благодаря этому сложное окрашивание занимает 3–4 часа вместо 6–8, а&nbsp;процесс осветления идёт более равномерно, что очень хорошо отражается на&nbsp;качестве волос.</span></li>
+        <li><span><b>При первичном визите всегда делаем бесплатную тестовую прядь</b>, проверяем волосы на&nbsp;качество и&nbsp;только после этого приступаем к&nbsp;окрашиванию.</span></li>
+        <li><span>В&nbsp;работе используем только премиальные красители высокого качества&nbsp;— La&nbsp;Biosthetique, BRAÉ, Lebel, Nook, Evo Fabuloso.</span></li>
+        <li><span>Студия с&nbsp;модным атмосферным дизайном, много зелени и&nbsp;птицы&nbsp;— можно полностью переключиться от&nbsp;будничных проблем.</span></li>
+        <li><span>Всех гостей угощаем вкусными десертами&nbsp;— чай, кофе, шампанское на&nbsp;любой вкус.</span></li>
+      </ol>
+      <div class="popular">
+        <p>Популярные услуги</p>
+        <div>
+          <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/balayazh/">Балаяж</a>
+          <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/airtouch/">Airtouch</a>
+          <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/melirovanie/">Мелирование</a>
+          <a href="https://ltrstyle.ru/uslugi/slozhnoe-okrashivanie/shatush/">Шатуш</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. КОНТАКТЫ И КАРТА ============ -->
+<section class="contacts" aria-labelledby="cont-t">
+  <div class="wrap contacts__grid">
+    <div class="contacts__main">
+      <h2 class="h2" id="cont-t">Как нас найти</h2>
+      <dl>
+        <div><dt>Адрес</dt><dd>Москва, ул.&nbsp;Василисы Кожиной,&nbsp;13<br>м.&nbsp;Парк Победы</dd></div>
+        <div><dt>Часы работы</dt><dd>Ежедневно 10:00–22:00</dd></div>
+        <div><dt>Телефон</dt><dd><a href="tel:+79997990606">+7 999 799 06 06</a></dd></div>
+      </dl>
+      <div class="hero__cta">
+        <a class="btn btn--ghost" href="https://yandex.ru/maps/org/studiya_volos_ltrstyle/92497164316/" target="_blank" rel="noopener">Построить маршрут</a>
+      </div>
+    </div>
+    <div class="contacts__map">
+      <iframe src="https://yandex.ru/map-widget/v1/org/studiya_volos_ltrstyle/92497164316/" title="Студия LTRstyle на Яндекс Картах" loading="lazy" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+{{FOOTER}}
+
+<div class="toast" id="toast" role="status" aria-live="polite">Промокод скопирован</div>
+
+<!-- скрипты исходных блоков сайта (Swiper 11 + файлы темы без изменений) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+<script>
+{{LEGACY_JS}}
+</script>
+
+<script>
+(function(){
+  // отзывы: слайдер + «читать полностью»
+  var tr=document.getElementById('revTrack'),dots=document.getElementById('revDots'),pv=document.getElementById('revPrev'),nx=document.getElementById('revNext');
+  var cards=[].slice.call(tr.children);
+  cards.forEach(function(c){
+    var t=c.querySelector('.rcard__txt'),b=c.querySelector('.rcard__more');
+    if(t.scrollHeight<=t.clientHeight+2)b.hidden=true;
+    b.addEventListener('click',function(){var o=c.classList.toggle('is-open');b.textContent=o?'Свернуть':'Читать полностью'});
+  });
+  cards.forEach(function(){dots.appendChild(document.createElement('i'))});
+  function step(){return cards[0].getBoundingClientRect().width+18}
+  function upd(){
+    pv.disabled=tr.scrollLeft<=2;nx.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-2;
+    var i=Math.round(tr.scrollLeft/step());[].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i)});
+  }
+  pv.addEventListener('click',function(){tr.scrollBy({left:-step(),behavior:'smooth'})});
+  nx.addEventListener('click',function(){tr.scrollBy({left:step(),behavior:'smooth'})});
+  tr.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+
+  // промокод — копирование
+  var toast=document.getElementById('toast'),tt;
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var done=function(){toast.classList.add('is-on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('is-on')},1800)};
+    if(navigator.clipboard)navigator.clipboard.writeText(b.dataset.copy).then(done,done);else done();
+  })});
+
+  // наши работы — просмотр фото
+  var imgs=[].slice.call(document.querySelectorAll('#works img')),lb=document.getElementById('lb'),li=document.getElementById('lbImg'),lc=document.getElementById('lbC'),cur=0,last;
+  function show(i){cur=(i+imgs.length)%imgs.length;var im=imgs[cur];li.src=im.currentSrc||im.src;li.alt=im.alt;var full=new Image();full.onload=function(){if(imgs[cur]===im)li.src=full.src};full.src=im.dataset.full;lc.textContent=(cur+1)+' / '+imgs.length}
+  function open(i){last=document.activeElement;show(i);lb.classList.add('is-on');document.body.style.overflow='hidden';document.getElementById('lbX').focus()}
+  function close(){lb.classList.remove('is-on');document.body.style.overflow='';if(last)last.focus()}
+  imgs.forEach(function(im,i){im.parentNode.addEventListener('click',function(){open(i)})});
+  document.getElementById('lbX').addEventListener('click',close);
+  document.getElementById('lbP').addEventListener('click',function(){show(cur-1)});
+  document.getElementById('lbN').addEventListener('click',function(){show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  addEventListener('keydown',function(e){if(!lb.classList.contains('is-on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+
+  // видео — грузим плеер только по клику
+  var v=document.getElementById('video');
+  v.addEventListener('click',function(){var f=document.createElement('iframe');f.src=v.dataset.src;f.allow='autoplay; clipboard-write';f.allowFullscreen=true;f.title='Видео о студии LTRstyle';v.appendChild(f);v.style.cursor='default'},{once:true});
+})();
+</script>
+</body>
+</html>

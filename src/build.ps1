@@ -62,6 +62,7 @@ function Build($tpl, $dst, $vars) {
 $feat = $arts[0]
 
 Build 'index.tpl.html' 'index.html' @{
+  '{{NAV_ARTICLES}}' = ' class="is-current"'
   '{{CARDS}}'       = (($arts | ForEach-Object { Card $_ -Lazy:($_.i -ge 6) }) -join "`n")
   '{{F_URL}}'       = Url $feat
   '{{F_IMG}}'       = $feat.img
@@ -87,8 +88,23 @@ $share = @'
 <button class="sh" type="button" data-copy aria-label="Скопировать ссылку"><svg viewBox="0 0 20 20"><path d="M8.5 11.5a3.5 3.5 0 0 0 5 0l2.5-2.5a3.5 3.5 0 0 0-5-5l-1 1"/><path d="M11.5 8.5a3.5 3.5 0 0 0-5 0L4 11a3.5 3.5 0 0 0 5 5l1-1"/></svg></button>
 '@
 Build 'article.tpl.html' 'article.html' @{
+  '{{NAV_ARTICLES}}' = ' class="is-current"'
   '{{SHARE}}'       = $share
   '{{RELATED}}'     = (($related | ForEach-Object { Card $bySlug[$_] -Lazy }) -join "`n")
   '{{ORDER_TITLE}}' = 'Подберём стрижку без укладки'
   '{{ORDER_SUB}}'   = 'Оставьте телефон — администратор перезвонит и запишет на консультацию к стилисту. Новым клиентам <b>скидка 10%</b> по промокоду «Сайт».'
+}
+
+# ---------- Главная ----------
+# «Услуги» и «Наша команда» — исходные блоки сайта: разметка, стили и скрипты темы взяты из legacy/ без изменений
+$lg = "$src\legacy"
+Build 'home.tpl.html' 'home.html' @{
+  '{{NAV_ARTICLES}}'   = ''
+  '{{STAR}}'           = '<svg viewBox="0 0 20 20"><path d="m10 1.5 2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6-4.5-4.2 6.1-.7z"/></svg>'
+  '{{BLOCK_SERVICES}}' = Read-Text "$lg\block-services-slider.html"
+  '{{BLOCK_TEAM}}'     = Read-Text "$lg\block-team.html"
+  '{{LEGACY_CSS}}'     = (('service-card.css','services-slider.css','team.css' | ForEach-Object { "/* $_ (ltrstyle.ru/wp-content/themes/pride/css) */`n" + (Read-Text "$lg\$_") }) -join "`n")
+  '{{LEGACY_JS}}'      = (('services-slider.js','team-filter.js','team-slider.js' | ForEach-Object { "/* $_ */`n" + (Read-Text "$lg\$_") }) -join ";`n")
+  '{{ORDER_TITLE}}'    = 'Скидка 10% на&nbsp;первый визит'
+  '{{ORDER_SUB}}'      = 'Оставьте имя и телефон — администратор перезвонит, подберёт мастера и удобное время. Скидка <b>10%</b> по промокоду «Сайт».'
 }
