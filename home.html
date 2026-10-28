@@ -61,7 +61,7 @@ button,input,select{font:inherit;color:inherit}
 .hdr__addr small{display:block;font-size:12px;color:var(--muted);margin-top:4px}
 .hdr__addr small a{color:var(--muted)}
 .hdr__logo img{height:78px;width:auto}
-.hdr__cnt{text-align:right;font-size:17px;line-height:1.2}
+.hdr__cnt{text-align:right;font-size:17px;line-height:1.2;white-space:nowrap}
 .hdr__cnt a{text-decoration:none}
 .hdr__cnt small{display:block;font-size:12px;color:var(--muted);margin-top:4px}
 .nav{display:flex;justify-content:space-between;list-style:none;margin:0;padding:6px 0 0}
@@ -106,6 +106,7 @@ button,input,select{font:inherit;color:inherit}
   .hdr__logo img{height:56px}
   .hdr__cnt small{display:none}
   .hdr__cnt{font-size:15px}
+  .hdr__top{column-gap:8px}
   .nav{display:none;flex-direction:column;padding:0 0 12px}
   .hdr.is-open .nav{display:flex}
   .nav>li{border-top:1px solid var(--border)}
@@ -121,6 +122,8 @@ button,input,select{font:inherit;color:inherit}
   .drop__list a{font-size:16px;padding:5px 0}
   .drop__all{margin-top:0}
 }
+
+@media (max-width:380px){.hdr__cnt{font-size:13px}.hdr__logo img{height:48px}}
 
 .crumbs{font-size:13px;padding:14px 0;color:var(--text)}
 .crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
@@ -255,7 +258,8 @@ button,input,select{font:inherit;color:inherit}
 .ba-nav .arrow{width:44px;height:44px}
 .ba-cap{min-width:190px;text-align:center;line-height:1.2}
 .ba-cap b{display:block;font-weight:500;font-size:18px}
-.ba-cap span{font-family:var(--sans);font-size:12px;color:var(--muted)}
+.ba-cap span{font-family:var(--sans);font-size:12px;color:var(--muted);white-space:nowrap}
+@media (max-width:420px){.ba-hint{display:none}.ba-nav{gap:10px}.ba-nav .arrow{width:40px;height:40px}.ba-cap{min-width:0}}
 @media (max-width:1240px){.facts b{font-size:26px}}
 @media (max-width:991px){
   .hero__grid{grid-template-columns:1fr;min-height:0}
@@ -1736,7 +1740,7 @@ body {
       </div>
       <div class="ba-nav">
         <button class="arrow" type="button" id="baPrev" aria-label="Предыдущая работа"><svg viewBox="0 0 20 20"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
-        <p class="ba-cap" aria-live="polite"><b id="baLevel">Топ Стилист</b><span id="baNum">Работа 1 из 6 · тяните шторку</span></p>
+        <p class="ba-cap" aria-live="polite"><b id="baLevel">Топ Стилист</b><span><span id="baNum">Работа 1 из 6</span><span class="ba-hint" id="baHint"> · тяните шторку</span></span></p>
         <button class="arrow" type="button" id="baNext" aria-label="Следующая работа"><svg viewBox="0 0 20 20"><path d="M7.5 4l6 6-6 6"/></svg></button>
       </div>
     </div>
@@ -3081,7 +3085,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function fill(i){
     bf.src=src(i,0);af.src=src(i,1);bf.alt='До: работа '+(i+1);af.alt='После: работа '+(i+1);
     b1.src=src(i+1,1);b2.src=src(i+2,1);
-    lvl.textContent=W[i][2];num.textContent='Работа '+(i+1)+' из '+W.length+(touched?'':' · тяните шторку');
+    lvl.textContent=W[i][2];num.textContent='Работа '+(i+1)+' из '+W.length;
     [new Image(),new Image()].forEach(function(im,k){im.src=src(i+1,k)});
   }
   function go(d){
@@ -3091,7 +3095,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var done=false;function swap(){if(done)return;done=true;cur=i;fill(i);setPos(50);out.cancel();ba.animate([{transform:'translateX(60px) rotate(5deg)',opacity:0},{transform:'none',opacity:1}],{duration:420,easing:'cubic-bezier(.2,.8,.2,1)'})}
     out.onfinish=swap;setTimeout(swap,450); // запасной вызов, если кадры не идут (фоновая вкладка)
   }
-  function stopHint(){touched=true;cancelAnimationFrame(hintRaf);num.textContent='Работа '+(cur+1)+' из '+W.length}
+  function stopHint(){touched=true;cancelAnimationFrame(hintRaf);document.getElementById('baHint').hidden=true}
   function at(e){var r=ba.getBoundingClientRect();setPos((e.clientX-r.left)/r.width*100)}
   var drag=false;
   ba.addEventListener('pointerdown',function(e){drag=true;stopHint();ba.setPointerCapture(e.pointerId);at(e)});
